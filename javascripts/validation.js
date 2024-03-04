@@ -17,23 +17,22 @@ window.onload = function() {
   window.onload = confirmSubmit;
   
 
-  function emailValidation() {
-    const form = document.getElementById('form');
-    const emailConfirm = document.getElementById('email_confirm');
-    const emailErrorMessage = document.getElementById('email_error_message');
-    const emailErrorRow = document.getElementById('email_error');
+  function validateEmail() {
+    const email = document.getElementById("email").value;
+    const confirmEmail = document.getElementById("confirm_email").value;
+    const errorElement = document.getElementById("email_error");
+    const formElement = document.getElementById("email_form");
   
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      if(form.email.value !== form.email_confirm.value) {
-        emailErrorRow.style.display = 'table-row';
-        emailErrorMessage.textContent = "Eメールが一致しません";
-        emailConfirm.style.backgroundColor = 'rgba(230,169,171,.5)';
-      } else {
-        form.submit();
-      }
-    });
-  };
+    if (email !== confirmEmail) {
+      errorElement.textContent = "Email does not match";
+      errorElement.style.color = "#d14539";
+      formElement.style.backgroundColor = "rgba(230, 169, 171, 0.5)";
+    } else {
+      errorElement.textContent = "";
+      formElement.style.backgroundColor = "";
+    }
+  }
+  
   
   window.onload = emailValidation;
   
